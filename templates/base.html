@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+   <link rel="stylesheet" href="{% static 'jquery-ui/jquery-ui.min.css' %}">
+    <script src="{% static 'jquery-ui/external/jquery/jquery.js' %}"></script>
+    <script src="{% static 'jquery-ui/jquery-ui.min.js' %}"></script>
+
+
+  <title>Опт и Снабжение</title>
+
+
+</head>
+
+<body class="text-center">
+
+  {% include "layouts/navbar.html" %}
+  {% if messages %}
+  {% include "layouts/alert.html" %}
+  {% endif %}
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    {% block content %}
+    <p class="lead">Ой! Страница не найдена =((</p>
+    {% endblock content %}
+  </div>
+  {% include "layouts/footer.html" %}
+
+
+</body>
+
+</html>

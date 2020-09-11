@@ -1,0 +1,58 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{%block menu%}
+    {%include "menu.html" with is_login=True%}
+{%endblock menu%}
+
+
+{% block title %}{% trans "Log in" %}{% endblock %}
+
+{% block content %}
+<div class="cover-container d-flex w-30 h-100 p-3 mx-auto flex-column">
+</div>
+    <h2>Вход на сайт</h2>
+<p>Вы сможете создавать заявки и получать предложения от поставщиков</p>
+
+<form class="cover-container w-40 h-100 p-3 mx-auto flex-column" method="post" action="">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type="submit" class="btn btn-lg btn-primary " value="{% trans 'Log in' %}" />
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+<small>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</small>
+<small>{% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>.</small>
+{% endblock %}
+
+
+{% comment %}
+{% crispy form %}
+    {{ form|crispy }}
+**registration/login.html**
+
+It's your responsibility to provide the login form in a template called
+registration/login.html by default. This template gets passed four
+template context variables:
+
+``form``
+    A Form object representing the login form. See the forms
+    documentation for more on Form objects.
+
+``next``
+    The URL to redirect to after successful login. This may contain a
+    query string, too.
+
+``site``
+    The current Site, according to the SITE_ID setting. If you don't
+    have the site framework installed, this will be set to an instance
+    of RequestSite, which derives the site name and domain from the
+    current HttpRequest.
+
+``site_name``
+    An alias for site.name. If you don't have the site framework
+    installed, this will be set to the value of
+    request.META['SERVER_NAME']. For more on sites, see The
+    "sites" framework.
+{% endcomment %}

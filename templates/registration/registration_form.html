@@ -1,0 +1,27 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}{% trans "Register for an account" %}{% endblock %}
+
+{% block content %}
+<div class="cover-container d-flex w-30 h-100 p-3 mx-auto flex-column">
+</div>
+    <h2>Регистрация пользователя</h2>
+    <p></p>
+<br>Вы сможете создавать заявки и получать предложения от поставщиков</p>
+
+
+
+            <form method="post" action="">
+                {% csrf_token %}
+                {% crispy form %}
+                <small>* - обязательные поля заполнения</small>
+            </form>
+
+
+
+
+{% endblock %}
+
